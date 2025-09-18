@@ -1,0 +1,35 @@
+# Program Synthesis Pipeline
+
+This project implements a modular program synthesis pipeline designed to work alongside any large language model (LLM). The pipeline boosts an LLM's capabilities by orchestrating structured prompting, program generation, verification, and refinement loops.
+
+## Architecture Overview
+
+```
++-- src
+    +-- synthesis
+        +-- llm_interface.py      # LLM adapter interfaces and mock implementations
+        +-- prompts.py            # Prompt templates and builders for pipeline stages
+        +-- tasks.py              # Task specifications and result tracking
+        +-- workspace.py          # Isolated execution sandbox for candidate programs
+        +-- evaluation.py         # Automated test execution and scoring
+        +-- synthesis_loop.py     # Core synthesis controller orchestrating the stages
+        +-- utils.py              # Shared helpers (logging, retry, timing)
+        +-- plugins
+            +-- python_executor.py # Plugin for executing Python candidate programs
+```
+
+Key ideas:
+
+- **LLM-agnostic adapters** - Implement `LLMClient` interfaces that can wrap any model. The mock client enables local development without network calls.
+- **Task specifications** - Define tasks with natural language problem statements, IO contracts, and reference tests.
+- **Iterative refinement** - Run a generate -> execute -> evaluate -> reflect loop to improve synthesized programs.
+- **Plugin-based execution** - Execute synthesized programs in isolated workspaces. Python is included out-of-the-box; other languages can be plugged in.
+
+## Getting Started
+
+1. Install dependencies in editable mode: `pip install -e .`
+2. Run the demonstration script: `PYTHONPATH=src python examples/run_pipeline.py`
+3. Execute the unit test: `PYTHONPATH=src python -m unittest discover -s tests`
+4. Extend the pipeline by implementing new `LLMClient` adapters or adding execution plugins for other languages.
+
+Detailed module documentation is provided inline with the source.

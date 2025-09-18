@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=62"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "synthesis-pipeline"
+version = "0.1.0"
+description = "Program synthesis pipeline that enhances LLM capabilities."
+authors = [{name = "Codex User"}]
+requires-python = ">=3.9"
+dependencies = []
+
+[project.urls]
+Homepage = "https://example.com"
+Documentation = "https://example.com/docs"
