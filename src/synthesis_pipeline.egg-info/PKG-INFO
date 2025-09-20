@@ -1,0 +1,8 @@
+Metadata-Version: 2.4
+Name: synthesis-pipeline
+Version: 0.1.0
+Summary: Program synthesis pipeline that enhances LLM capabilities.
+Author: Codex User
+Project-URL: Homepage, https://example.com
+Project-URL: Documentation, https://example.com/docs
+Requires-Python: >=3.9

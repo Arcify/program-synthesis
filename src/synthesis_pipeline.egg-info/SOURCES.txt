@@ -1,0 +1,17 @@
+README.md
+pyproject.toml
+src/synthesis/__init__.py
+src/synthesis/evaluation.py
+src/synthesis/llm_interface.py
+src/synthesis/prompts.py
+src/synthesis/synthesis_loop.py
+src/synthesis/tasks.py
+src/synthesis/utils.py
+src/synthesis/workspace.py
+src/synthesis/plugins/__init__.py
+src/synthesis/plugins/python_executor.py
+src/synthesis_pipeline.egg-info/PKG-INFO
+src/synthesis_pipeline.egg-info/SOURCES.txt
+src/synthesis_pipeline.egg-info/dependency_links.txt
+src/synthesis_pipeline.egg-info/top_level.txt
+tests/test_pipeline.py
