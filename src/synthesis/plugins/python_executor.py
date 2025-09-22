@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import builtins
+import traceback
 from dataclasses import dataclass
 from typing import Any, Dict, List
 
@@ -23,6 +24,7 @@ _SAFE_BUILTINS = {
         "max",
         "min",
         "pow",
+        "print",
         "range",
         "sum",
         "zip",
@@ -50,7 +52,15 @@ class PythonExecutor:
         candidate: CandidateProgram,
         task: TaskSpecification,
     ) -> ExecutionReport:
-        namespace = self._build_namespace(candidate.code)
+        try:
+            namespace = self._build_namespace(candidate.code)
+        except Exception as exc:  # pragma: no cover - defensive guard
+            message = self._format_compile_error(exc)
+            failure_count = max(len(task.examples), 1)
+            return ExecutionReport(
+                passed=False, outputs=[], failures=[message] * failure_count
+            )
+
         entry = namespace.get(task.entry_point)
         if not callable(entry):
             failure = f"Entry point '{task.entry_point}' not found in candidate program."
@@ -84,3 +94,9 @@ class PythonExecutor:
         exec(code, compiled_globals, compiled_locals)
         compiled_globals.update(compiled_locals)
         return compiled_globals
+
+    def _format_compile_error(self, exc: Exception) -> str:
+        summary = "".join(traceback.format_exception_only(type(exc), exc)).strip()
+        if not summary:
+            summary = repr(exc)
+        return f"Compilation error: {summary}"

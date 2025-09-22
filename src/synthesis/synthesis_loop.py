@@ -33,10 +33,12 @@ class SynthesisPipeline:
         self.config = config or SynthesisConfig()
         self.executor = executor or PythonExecutor()
         self._last_state: Optional[SynthesisState] = None
+        self._best_candidate: Optional[CandidateProgram] = None
 
     def run(self, task: TaskSpecification) -> EvaluationOutcome:
         state = SynthesisState(task=task)
         self._last_state = state
+        self._best_candidate = None
         guidance_override: Optional[str] = None
 
         best_outcome: Optional[EvaluationOutcome] = None
@@ -55,6 +57,16 @@ class SynthesisPipeline:
             outcome = evaluate_candidate(candidate, task, executor=self.executor)
             state.record(candidate, outcome)
             best_outcome = self._select_best(best_outcome, outcome)
+            if best_outcome is outcome:
+                self._best_candidate = candidate
+                best_outcome.details = {
+                    **best_outcome.details,
+                    "candidate": {
+                        "code": candidate.code,
+                        "attempt": candidate.attempt,
+                        "origin": candidate.origin,
+                    },
+                }
 
             if outcome.passed or outcome.score >= self.config.score_threshold:
                 break
@@ -70,6 +82,10 @@ class SynthesisPipeline:
     @property
     def last_state(self) -> Optional[SynthesisState]:
         return self._last_state
+
+    @property
+    def best_candidate(self) -> Optional[CandidateProgram]:
+        return self._best_candidate
 
     def _extract_code(self, text: str) -> str:
         """Strip Markdown fences and leading/trailing whitespace."""
