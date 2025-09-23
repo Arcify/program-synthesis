@@ -1,0 +1,62 @@
+{
+  "summary": {
+    "total": 5,
+    "passed": 0,
+    "pass_rate": 0.0,
+    "mean_score": 0.7933333333333333,
+    "median_score": 0.8333333333333334,
+    "total_runtime_sec": 145.0154382999899
+  },
+  "results": [
+    {
+      "task_id": "00576224",
+      "passed": false,
+      "score": 0.6666666666666667,
+      "attempts": 2,
+      "duration_sec": 30.5326086999994,
+      "feedback": "Failures detected:\nEntry point 'solve_arc' not found in candidate program."
+    },
+    {
+      "task_id": "007bbfb7",
+      "passed": false,
+      "score": 0.8333333333333334,
+      "attempts": 2,
+      "duration_sec": 31.5386942000041,
+      "feedback": "Failures detected:\nEntry point 'solve_arc' not found in candidate program."
+    },
+    {
+      "task_id": "009d5c81",
+      "passed": false,
+      "score": 0.8333333333333334,
+      "attempts": 2,
+      "duration_sec": 26.315815199995995,
+      "feedback": "Failures detected:\nEntry point 'solve_arc' not found in candidate program."
+    },
+    {
+      "task_id": "00d62c1b",
+      "passed": false,
+      "score": 0.8333333333333334,
+      "attempts": 2,
+      "duration_sec": 28.05698449999909,
+      "feedback": "Failures detected:\nEntry point 'solve_arc' not found in candidate program."
+    },
+    {
+      "task_id": "00dbd492",
+      "passed": false,
+      "score": 0.8,
+      "attempts": 2,
+      "duration_sec": 28.571335699991323,
+      "feedback": "Failures detected:\nEntry point 'solve_arc' not found in candidate program."
+    }
+  ],
+  "config": {
+    "llm": "openai",
+    "model": "gpt-5-nano",
+    "max_iterations": 2,
+    "dataset": {
+      "challenges": "tests\\data\\arc\\arc-agi_training_challenges.json",
+      "solutions": "tests\\data\\arc\\arc-agi_training_solutions.json",
+      "count": 5
+    }
+  }
+}
