@@ -1,0 +1,3 @@
+python examples/evaluate_arc_dataset.py --llm openai --model gpt-5-nano --max-iterations 2 --limit 5 --output arc_results.json
+
+$env:OPENAI_API_KEY = "sk-your-real-key"

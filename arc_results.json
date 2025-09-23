@@ -5,7 +5,7 @@
     "pass_rate": 0.0,
     "mean_score": 0.7933333333333333,
     "median_score": 0.8333333333333334,
-    "total_runtime_sec": 145.0154382999899
+    "total_runtime_sec": 182.24462779999885
   },
   "results": [
     {
@@ -13,7 +13,7 @@
       "passed": false,
       "score": 0.6666666666666667,
       "attempts": 2,
-      "duration_sec": 30.5326086999994,
+      "duration_sec": 42.88027900000452,
       "feedback": "Failures detected:\nEntry point 'solve_arc' not found in candidate program."
     },
     {
@@ -21,7 +21,7 @@
       "passed": false,
       "score": 0.8333333333333334,
       "attempts": 2,
-      "duration_sec": 31.5386942000041,
+      "duration_sec": 35.53204370000458,
       "feedback": "Failures detected:\nEntry point 'solve_arc' not found in candidate program."
     },
     {
@@ -29,7 +29,7 @@
       "passed": false,
       "score": 0.8333333333333334,
       "attempts": 2,
-      "duration_sec": 26.315815199995995,
+      "duration_sec": 42.39860139999655,
       "feedback": "Failures detected:\nEntry point 'solve_arc' not found in candidate program."
     },
     {
@@ -37,7 +37,7 @@
       "passed": false,
       "score": 0.8333333333333334,
       "attempts": 2,
-      "duration_sec": 28.05698449999909,
+      "duration_sec": 31.738871099994867,
       "feedback": "Failures detected:\nEntry point 'solve_arc' not found in candidate program."
     },
     {
@@ -45,7 +45,7 @@
       "passed": false,
       "score": 0.8,
       "attempts": 2,
-      "duration_sec": 28.571335699991323,
+      "duration_sec": 29.694832599998335,
       "feedback": "Failures detected:\nEntry point 'solve_arc' not found in candidate program."
     }
   ],

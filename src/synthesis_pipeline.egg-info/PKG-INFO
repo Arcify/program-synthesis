@@ -6,3 +6,4 @@ Author: Codex User
 Project-URL: Homepage, https://example.com
 Project-URL: Documentation, https://example.com/docs
 Requires-Python: >=3.9
+Requires-Dist: openai>=1.30.0
