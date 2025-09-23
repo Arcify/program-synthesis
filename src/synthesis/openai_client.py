@@ -61,6 +61,14 @@ class OpenAIClient(LLMClient):
 
         # Merge additional options with per-call kwargs taking precedence.
         options: Dict[str, Any] = {**self.config.extra_options, **kwargs}
+        options.pop("language", None)
+        if temperature is not None and "temperature" not in options:
+            options["temperature"] = temperature
+        if max_output_tokens is not None and "max_output_tokens" not in options:
+            options["max_output_tokens"] = max_output_tokens
+
+        if self.config.model.startswith("gpt-5"):
+            options.pop("temperature", None)
 
         messages = []
         if system_prompt:
@@ -70,8 +78,6 @@ class OpenAIClient(LLMClient):
         response = self._client.responses.create(
             model=self.config.model,
             input=messages,
-            temperature=temperature,
-            max_output_tokens=max_output_tokens,
             **options,
         )
 
